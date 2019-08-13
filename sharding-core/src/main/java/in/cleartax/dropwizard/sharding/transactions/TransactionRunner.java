@@ -41,7 +41,7 @@ public abstract class TransactionRunner<T> {
     private final MultiTenantUnitOfWorkAwareProxyFactory proxyFactory;
     private final SessionFactory sessionFactory;
     private final ConstTenantIdentifierResolver tenantIdentifierResolver;
-    private final Method methodOfInvocation;
+    private final TransactionContext transactionContext;
 
     @Nullable
     @Setter
@@ -69,7 +69,7 @@ public abstract class TransactionRunner<T> {
         } finally {
             aspect.onFinish();
             log.trace("[DATABASE] transaction={} error={} context={} time-elapsed={}",
-                    unitOfWork.transactional(), ex != null, resolveOperationName(methodOfInvocation), System.currentTimeMillis() - startTime);
+                    unitOfWork.transactional(), ex != null, resolveOperationName(transactionContext.getMethodOfInvocation()), System.currentTimeMillis() - startTime);
             DelegatingTenantResolver.getInstance().setDelegate(null);
             invokeFinishListener(ex != null, unitOfWork);
         }
@@ -82,13 +82,13 @@ public abstract class TransactionRunner<T> {
 
     private void invokeStartListener(UnitOfWork unitOfWork) {
         if (listener != null) {
-            listener.onStart(unitOfWork, methodOfInvocation);
+            listener.onStart(unitOfWork, transactionContext);
         }
     }
 
     private void invokeFinishListener(boolean success, UnitOfWork unitOfWork) {
         if (listener != null) {
-            listener.onFinish(success, unitOfWork, methodOfInvocation);
+            listener.onFinish(success, unitOfWork, transactionContext);
         }
     }
 

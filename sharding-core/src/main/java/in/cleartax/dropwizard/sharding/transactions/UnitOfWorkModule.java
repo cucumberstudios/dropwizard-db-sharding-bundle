@@ -68,7 +68,7 @@ public class UnitOfWorkModule extends AbstractModule {
 
             TransactionRunner runner = new TransactionRunner(multiTenantSessionSource.getUnitOfWorkAwareProxyFactory(),
                     multiTenantSessionSource.getSessionFactory(),
-                    new ConstTenantIdentifierResolver(tenantId), mi.getMethod()) {
+                    new ConstTenantIdentifierResolver(tenantId), TransactionContext.create(mi.getMethod())) {
                 @Override
                 public Object run() throws Throwable {
                     return mi.proceed();

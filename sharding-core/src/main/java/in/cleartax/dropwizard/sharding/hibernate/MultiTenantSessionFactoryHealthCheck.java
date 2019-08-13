@@ -20,6 +20,7 @@ package in.cleartax.dropwizard.sharding.hibernate;
 import com.codahale.metrics.health.HealthCheck;
 import com.google.common.util.concurrent.MoreExecutors;
 import in.cleartax.dropwizard.sharding.transactions.DefaultUnitOfWorkImpl;
+import in.cleartax.dropwizard.sharding.transactions.TransactionContext;
 import in.cleartax.dropwizard.sharding.transactions.TransactionRunner;
 import io.dropwizard.db.TimeBoundHealthCheck;
 import io.dropwizard.util.Duration;
@@ -79,7 +80,7 @@ public class MultiTenantSessionFactoryHealthCheck extends HealthCheck {
         try {
             for (String eachTenantId : tenantIdentifiers) {
                 new TransactionRunner<Void>(proxyFactory, sessionFactory,
-                        new ConstTenantIdentifierResolver(eachTenantId), this.getClass().getEnclosingMethod()) {
+                        new ConstTenantIdentifierResolver(eachTenantId), TransactionContext.create(this.getClass().getEnclosingMethod())) {
                     @Override
                     public Void run() {
                         sessionFactory.getCurrentSession().createNativeQuery(validationQuery).list();

@@ -96,6 +96,7 @@ try {
 ```
 Example use-case: This might be useful in case you're aggregating data from across all the shards
 
+
 4. **Connect to a shard without using @UnitOfWork**
 
 This is not recommended because then you'll need hibernate specific objects in your business code. In case required, you can instantiate [TransactionRunner](https://github.com/ClearTax/dropwizard-db-sharding-bundle/blob/master/sharding-core/src/main/java/in/cleartax/dropwizard/sharding/transactions/TransactionRunner.java) and use it as [mentioned here](https://github.com/ClearTax/dropwizard-db-sharding-bundle/blob/0f8fc581eb/sharding-core/src/main/java/in/cleartax/dropwizard/sharding/transactions/UnitOfWorkModule.java#L79)

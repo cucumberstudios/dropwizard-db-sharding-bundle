@@ -1,5 +1,11 @@
 # Dropwizard DB Sharding Bundle
 
+This library is fork out of Cleantax's library: [Dropwizard DB Sharding Bundle](https://github.com/ClearTax/dropwizard-db-sharding-bundle)
+The original library does not seem to be in maintenance anymore. There are features we would love to see. For the purpose, we plan to maintain this fork.
+Maintained by: [@pradipta](https://github.com/pradipta)
+
+The changes to this fork will soon be added to Maven Repo under it's own artifact. Stay tuned.
+
 This library adds support for Database sharding in [Dropwizard](https://www.dropwizard.io) based applications.
 Make sure you're familiar with Dropwizard, dependency injection framework like [Guice](https://github.com/google/guice) and concepts like [ThreadLocals](https://docs.oracle.com/javase/7/docs/api/java/lang/ThreadLocal.html) before going ahead.
 

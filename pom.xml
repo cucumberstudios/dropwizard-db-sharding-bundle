@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>in.cleartax.dropwizard</groupId>
+    <groupId>com.cucumberstudios.dropwizard</groupId>
     <artifactId>db-sharding-bundle</artifactId>
     <packaging>pom</packaging>
-    <version>0.2.199-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>sharding-bom</module>
         <module>sharding-core</module>
@@ -13,7 +13,7 @@
         <module>sharding-example</module>
     </modules>
     <name>${project.groupId}:${project.artifactId}</name>
-    <url>https://github.com/ClearTax/dropwizard-db-sharding-bundle</url>
+    <url>https://github.com/cucumberstudios/dropwizard-db-sharding-bundle</url>
     <description>This is a framework around Dropwizard to use Hibernate's multitenancy. This framework is Guice
         friendly
     </description>
@@ -48,11 +48,8 @@
 
     <developers>
         <developer>
-            <id>siddharth96</id>
-            <name>Siddharth Srivastava</name>
-            <email>siddharth.srivastava@cleartax.in</email>
-            <organization>ClearTax</organization>
-            <organizationUrl>https://cleartax.in/</organizationUrl>
+            <id>pradipta</id>
+            <name>Pradipta</name>
         </developer>
     </developers>
 
